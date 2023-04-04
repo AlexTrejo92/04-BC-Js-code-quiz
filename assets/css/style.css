@@ -1,0 +1,41 @@
+:root {
+    --pink: #23939b;
+
+}
+
+.header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 1.5em;
+}
+
+.header link {
+    color: var(--pink);
+}
+
+.content {
+    text-align: center;
+    margin: 10%;
+    line-height: 1.5em;
+    font-size: larger;
+}
+
+.content h1 {
+    font-size: xx-large;
+    margin: 1.1em;
+    font-family: 'Bebas Neue', 'Helvetica', 'Sans Serif';
+}
+
+.startBtn {
+    background-color: var(--pink);
+    color: white;
+    padding: 8px 15px;
+    margin: 20px 10px;
+    border-radius: 5px;
+    border-style: none;
+}
+
+.startBtn:hover {
+    cursor: pointer;
+}

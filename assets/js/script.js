@@ -4,6 +4,8 @@ var timerCounter = document.querySelector('.timer');
 
 var startBtn = document.querySelector(".startBtn");
 
+var hideCont = document.querySelector('.content');
+
 var timer;
 
 var timerCount = 60;
@@ -11,6 +13,7 @@ var timerCount = 60;
 function startQuiz() {
     timerCount = 60;
     startTimer()
+    hideCont.setAttribute('style', 'display: none');
 }
 
 function startTimer() {
@@ -26,4 +29,4 @@ timer = setInterval(function() {
 }, 1000);
 }
 
-startBtn.addEventListener("click", startTimer);
+startBtn.addEventListener("click", startQuiz);

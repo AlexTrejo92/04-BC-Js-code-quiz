@@ -14,11 +14,20 @@
     color: var(--pink);
 }
 
+.header div {
+    display: flex;
+}
+
+.timer {
+    padding-left: 5px;
+}
+
 .content {
     text-align: center;
     margin: 10%;
     line-height: 1.5em;
     font-size: larger;
+    display: block;
 }
 
 .content h1 {

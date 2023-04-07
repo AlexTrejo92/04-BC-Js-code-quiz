@@ -1,6 +1,6 @@
 :root {
-    --pink: #23939b;
-
+    --blue: #0c88ee;
+    --green: #28a7a0;
 }
 
 .header {
@@ -11,7 +11,7 @@
 }
 
 .header link {
-    color: var(--pink);
+    color: var(--blue);
 }
 
 .header div {
@@ -36,8 +36,19 @@
     font-family: 'Bebas Neue', 'Helvetica', 'Sans Serif';
 }
 
+.questionStyle {
+    text-align: center;
+    margin: 10%;
+    line-height: 1.5em;
+    font-size: larger;
+    display: block;
+    font-size: xx-large;
+    margin: 1.1em;
+    font-family: 'Bebas Neue', 'Helvetica', 'Sans Serif';
+}
+
 .startBtn {
-    background-color: var(--pink);
+    background-color: var(--blue);
     color: white;
     padding: 8px 15px;
     margin: 20px 10px;
@@ -47,4 +58,20 @@
 
 .startBtn:hover {
     cursor: pointer;
+    background-color: var(--green);
+}
+
+.questionsBtn {
+    display: block;
+    background-color: var(--blue);
+    color: white;
+    padding: 8px 15px;
+    margin: 20px 10px;
+    border-radius: 5px;
+    border-style: none;
+}
+
+.questionsBtn:hover {
+    cursor: pointer;
+    background-color: var(--green);
 }

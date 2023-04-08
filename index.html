@@ -24,16 +24,17 @@
                 <p>Try to answer the following code-related questions within the time limit.</p>
                 <p>Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
             </div>
-            <button class="startBtn"> Start Quiz </button>
+            <button id="startBtn" class="startBtn"> Start Quiz </button>
     </section>
         
-        <div class="questions" class="hidden">
+        <div id="questionSection" class="questions" class="hidden">
             <h2 id="questionText"></h2>
             <div id="choices" class="choices"></div>
         </div>
 
     <div id="endQuiz" class="hidden">
         <h2>All done!</h2>
+        <p>Your final score is <span id="finalScore">0</span>.</p>
     </div>
 
     <script src="./assets/js/script.js"></script>

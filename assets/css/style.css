@@ -36,13 +36,8 @@
     font-family: 'Bebas Neue', 'Helvetica', 'Sans Serif';
 }
 
-.questionStyle {
-    text-align: center;
-    margin: 10%;
-    line-height: 1.5em;
-    font-size: larger;
-    display: block;
-    font-size: xx-large;
+.questions h2 {
+    font-size: x-large;
     margin: 1.1em;
     font-family: 'Bebas Neue', 'Helvetica', 'Sans Serif';
 }
@@ -61,7 +56,7 @@
     background-color: var(--green);
 }
 
-.questionsBtn {
+.choicesBtn {
     display: block;
     background-color: var(--blue);
     color: white;
@@ -71,7 +66,15 @@
     border-style: none;
 }
 
-.questionsBtn:hover {
+.choicesBtn:hover {
     cursor: pointer;
     background-color: var(--green);
+}
+
+.choices button {
+    display: block;
+}
+
+.hidden {
+    display: none;
 }

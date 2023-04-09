@@ -64,6 +64,7 @@
     margin: 20px 10px;
     border-radius: 5px;
     border-style: none;
+    margin-left: 30%;
 }
 
 .choicesBtn:hover {
@@ -77,4 +78,14 @@
 
 .hidden {
     display: none;
+}
+
+.questionStyle {
+    text-align: center;
+}
+
+.popupmsg {
+    text-align: center;
+    font-size: large;
+    color:blue;
 }

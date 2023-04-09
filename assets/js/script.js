@@ -7,10 +7,10 @@ startBtn.addEventListener("click", startQuiz);
 var hideCont = document.querySelector('.content');
 var questionSection = document.getElementById('questionSection');
 var timer;
-var timerCount = 20;
+var timerCount = 75;
 var headerSelection = document.querySelectorAll("h1");
 var questionIndex = 0;
-
+var message = document.getElementById('wrong-right')
 
 // This is an object that holds all of the Questions and possible answers for the quiz
 var questions = [
@@ -36,9 +36,11 @@ var questions = [
     }
 ]
 
+console.log(questions);
+
 // This function initializes the counter and hides the main section so that the questions are displayed
 function startQuiz() {
-    timerCount = 20;
+    timerCount = 75;
     startTimer();
     hideCont.classList.add('hidden');
     questionSection.classList.remove("hidden");
@@ -59,29 +61,38 @@ timer = setInterval(function() {
 function runGame() {
 // This line adds content to the h2 tag on the HTML and changes it according to the questions inside the Object called 'Questions'
     var questionEl = document.getElementById("questionText");
-    questionEl.textContent = questions[questionIndex].questionText
+    questionEl.textContent = questions[questionIndex].questionText;
+    questionEl.className = 'questionStyle';
 
-    var choices = document.getElementById("choices");
+
 // This loop creates 4 different buttons based on the choices key within the 'Questions' object.
 for (var i = 0; i < questions[questionIndex].options.length; i++) {
+    var choices = document.getElementById("choices");
     choices = document.createElement('button');
     choices.textContent = questions[questionIndex].options[i];
-    document.body.appendChild(choices);
+    choices.setAttribute("value:", questions[questionIndex].options[i])
+    document.body.children[2].children[1].appendChild(choices);
     choices.className = 'choicesBtn';
     }
 
-var choicesBtns = document.querySelectorAll(".choicesBtn")
-console.log(choicesBtns);
-console.log(typeof choicesBtns);
+var choicesButtons = document.querySelectorAll('.choicesBtn');
+    console.log(choicesButtons);
+    choicesButtons.addEventListener("click", checkAnswer);
 
-choicesBtns.addEventListener("click", validation); 
 
-function validation() {
-    if (userSelection === questions[questionIndex].correctAnswer) {
+function checkAnswer() {
+    var currentQuestionData = questions[questionIndex];
+    console.log(currentQuestionData);
+    console.log(currentQuestionData.correctAnswer);
+    console.log(choicesButtons.innerText);
+    if (choicesButtons.innerText === currentQuestionData.correctAnswer) {
+        message.textContent = 'CORRECT!'
         console.log('correct!')
     } else {
-        console.log('incorrect')
+        timerCount -=10;
+        message.textContent = 'WRONG!'
     }
+    console.log(choicesButtons.innerText);
 }
 }
 

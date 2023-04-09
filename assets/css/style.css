@@ -87,5 +87,16 @@
 .popupmsg {
     text-align: center;
     font-size: large;
-    color:blue;
+    color:var(--blue);
+}
+
+#endQuiz {
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: large;
+    padding: 10px;
+}
+
+#endQuiz>h2, #endQuiz>p {
+    padding: 10px;
 }

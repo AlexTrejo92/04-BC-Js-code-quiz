@@ -6,7 +6,7 @@ startBtn.addEventListener("click", startQuiz);
 var hideCont = document.querySelector('.content');
 var questionSection = document.getElementById('questionSection');
 var timer;
-var timerCount = 75;
+var timerCount;
 var questionIndex = 0;
 var message = document.getElementById('wrong-right')
 var score;
@@ -35,38 +35,38 @@ var questions = [
     }
 ]
 
-console.log(questions);
-
 // This function initializes the counter and hides the main section so that the questions are displayed
 function startQuiz() {
     console.log('The StartQuiz function has been activated');
-    timerCount = 5;
+    timerCount = 75;
     startTimer();
     hideCont.classList.add('hidden');
     questionSection.classList.remove("hidden");
     showQuestion();
 }
 
+// When timer runs out, it stops the quiz and shows a sumbit highscore form.
 function startTimer() {
 timer = setInterval(function() {
     timerCount--;
     timerCounter.textContent = timerCount;
-    if (timerCount ===0) {
-        clearInterval(timer);
+    if (timerCount ===0 || questionIndex >= 4) {
+        clearInterval(timer)
+        endQuiz();
     }
 }, 1000);
+console.log('The startTimer function has been activated');
 }
-// When timer runs out, it should stop the quiz (or showQuestion function?) and show a sumbit highscore form.
+
+
 
 function showQuestion() {
-// This line adds content to the h2 tag on the HTML and changes it according to the questions inside the Object called 'Questions'
+    // This line adds content to the h2 tag on the HTML and changes it according to the questions inside the Object called 'Questions'
     var questionEl = document.getElementById("questionText");
     var qArray = questions[questionIndex];
     questionEl.textContent = qArray.questionText;
     questionEl.className = 'questionStyle';
-
-
-// This loop creates 4 different buttons based on the choices key within the 'Questions' object.
+    // This loop creates 4 different buttons based on the choices key within the 'Questions' object.
     for (var i = 0; i < questions[questionIndex].options.length; i++) {
     var choices = document.getElementById("choices");
     choices = document.createElement('button');
@@ -75,22 +75,21 @@ function showQuestion() {
     document.body.children[2].children[1].appendChild(choices);
     choices.className = 'choicesBtn';
     }
-
 console.log('The showQuestion function has been activated');
-
-// This loop creates an event listener to the buttons created via javascript
+    // This loop creates an event listener to the buttons created via javascript
     var choicesButtons = document.querySelectorAll('.choicesBtn');
     for (var i = 0; i <choicesButtons.length; i++){
         choicesButtons[i].addEventListener("click", checkAnswer);
     }
     console.log(questionIndex);
-
     if (questionIndex >= 3 || timerCount<=0) {
     endQuiz();
+    } else {
+    nextQuestion();  
     }
-
     return;
 }
+
 
 // This function validates the user selection of choices and checks if it is the correct answer.
 function checkAnswer() {
@@ -106,26 +105,40 @@ function checkAnswer() {
     console.log(questionIndex);
     console.log('The checkAnswer function has been activated');
     // setTimeout(nextQuestion, 1000);
-    if (questionIndex > 4) {
+    if (questionIndex >= 4 || timerCount<=0) {
         endQuiz();
-    }
+    } else {
     nextQuestion();
+    }
     return;
 }
 
 // This function changes the actual question for the next
 function nextQuestion() {
     console.log('The nextQuestion function has been activated')
-    if (questionIndex <= 3 || timerCount>0) {
+    if (questionIndex <= questions[questionIndex].length || timerCount>0) {
     // message.textContent = '';
     var questionEl = document.getElementById("questionText");
     questionEl.textContent = questions[questionIndex].questionText;
     var choicesButtons = document.querySelectorAll('.choicesBtn');
 
-    choicesButtons[0].innerText = questions[1].options[0];
-    choicesButtons[1].innerText = questions[1].options[1];
-    choicesButtons[2].innerText = questions[1].options[2];
-    choicesButtons[3].innerText = questions[1].options[3];
+// These lines of code replace the original text of the created buttons, but only to the next question
+    // choicesButtons[0].innerText = questions[1].options[0];
+    // choicesButtons[1].innerText = questions[1].options[1];
+    // choicesButtons[2].innerText = questions[1].options[2];
+    // choicesButtons[3].innerText = questions[1].options[3];
+
+console.log(questions[questionIndex].options.length);
+
+for (var i = 0; i < questions[questionIndex].options.length; i++) {
+    // var choices = document.getElementById("choices");
+    choicesButtons.innerText = questions[questionIndex].options[i];
+    // choices.setAttribute("value:", questions[questionIndex].options[i])
+    // document.body.children[2].children[1].appendChild(choices);
+    // choices.className = 'choicesBtn';
+    }
+
+
 
     // checkAnswer();
 } else {
@@ -135,13 +148,18 @@ function nextQuestion() {
 
 
 function endQuiz() {
-    console.log('THE GAME HAS ENDED');
+    score = timerCount;
+    console.log(score);
+    console.log('The endQuiz function has been activated');
     var ending = document.getElementById('questionSection');
     ending.classList.add('hidden');
     var message = document.getElementById('wrong-right');
     message.classList.add('hidden');
     var endScreen = document.getElementById('endQuiz');
     endScreen.classList.remove('hidden')
+    var printScore = document.getElementById('finalScore')
+    printScore.textContent = score;
+
 
 //     endScreen.textContent = 'Thanks for playing';
 //     score = timerCount;

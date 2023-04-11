@@ -68,8 +68,7 @@ function showQuestion() {
     questionEl.className = 'questionStyle';
     // This loop creates 4 different buttons based on the choices key within the 'Questions' object.
     for (var i = 0; i < questions[questionIndex].options.length; i++) {
-    var choices = document.getElementById("choices");
-    choices = document.createElement('button');
+    var choices = document.createElement('button');
     choices.innerText = questions[questionIndex].options[i];
     choices.setAttribute("value:", questions[questionIndex].options[i])
     document.body.children[2].children[1].appendChild(choices);
@@ -116,6 +115,8 @@ function checkAnswer() {
 // This function changes the actual question for the next
 function nextQuestion() {
     console.log('The nextQuestion function has been activated')
+
+    
     if (questionIndex <= questions[questionIndex].length || timerCount>0) {
     // message.textContent = '';
     var questionEl = document.getElementById("questionText");
@@ -130,13 +131,22 @@ function nextQuestion() {
 
 console.log(questions[questionIndex].options.length);
 
-for (var i = 0; i < questions[questionIndex].options.length; i++) {
-    // var choices = document.getElementById("choices");
-    choicesButtons.innerText = questions[questionIndex].options[i];
+for (var i = 0; i < choicesButtons.length; i++) {
+    // var choices = document.createElement('button');
+    choicesButtons[i].innerText = questions[questionIndex].options[i];
     // choices.setAttribute("value:", questions[questionIndex].options[i])
     // document.body.children[2].children[1].appendChild(choices);
     // choices.className = 'choicesBtn';
     }
+
+
+// for (var i = 0; i < questions[questionIndex].options.length; i++) {
+//     var choices = document.getElementById("choices");
+//     choicesButtons.innerText = questions[questionIndex].options[i];
+//     choices.setAttribute("value:", questions[questionIndex].options[i])
+//     document.body.children[2].children[1].appendChild(choices);
+//     choices.className = 'choicesBtn';
+//     }
 
 
 
